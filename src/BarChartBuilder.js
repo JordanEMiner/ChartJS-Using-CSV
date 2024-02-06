@@ -10,6 +10,7 @@ const ChartBuilder = () => {
   const chartRef = useRef(null);
   //Ref will store the reference to current chart instance
   const chartInstanceRef = useRef(null);
+  const [dataFetched, setDataFetched] = useState(false);
 
   //This useEffect runs once component mounts
   useEffect(() => {
@@ -18,10 +19,15 @@ const ChartBuilder = () => {
       const parsedData = await fetchData(process.env.PUBLIC_URL + 'STIG_OSS_ExportData.csv');
       //Updates 'data' state when data is retrieved
       setData(parsedData);
+      setDataFetched(true);
+      console.log("Data in ChartBuilder: ", parsedData);
     };
     //function call
     fetchDataAndBuildChart();
-  }, []);
+  }, [dataFetched]);
+
+
+  
 
   //Render chart when 'data' state changes
   useEffect(() => {
