@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {Chart} from 'chart.js/auto';
 import { fetchData } from './DataExtractor';
+import Papa from 'papaparse';
+
 
 const ChartBuilder = () => {
   //Returns the data and function to set the data
@@ -18,18 +20,17 @@ const ChartBuilder = () => {
     const fetchDataAndBuildChart = async () => {
       const parsedData = await fetchData(process.env.PUBLIC_URL + 'STIG_OSS_ExportData.csv');
       //Updates 'data' state when data is retrieved
+      //console.log("parsedData type: ", typeof response);
       setData(parsedData);
       setDataFetched(true);
-      console.log("Data in ChartBuilder: ", parsedData);
+   //   console.log("Data in ChartBuilder: ", parsedData);
     };
     //function call
     fetchDataAndBuildChart();
   }, [dataFetched]);
 
 
-  
-
-  //Render chart when 'data' state changes
+  //Create chart
   useEffect(() => {
     //Check for available data
     if (data.length > 0) {
@@ -56,6 +57,7 @@ const ChartBuilder = () => {
             },
           ],
         };
+        console.log(columnValues)
 
         const chartOptions = {
           scales: {
@@ -64,8 +66,9 @@ const ChartBuilder = () => {
               labels: columnLabels,
             },
             y: {
-              type: 'linear', // Use 'linear' scale for values
+              type: 'logarithmic', // Use 'linear' scale for values
               beginAtZero: true,
+              values: columnValues,
             },
           },
         };
@@ -86,6 +89,7 @@ const ChartBuilder = () => {
     }
   }, [data]);
 
+
   //coutMap = (code# -> count of code#)
   const getCountMap = (data) => {
     return data.reduce((countMap, row) => {
@@ -95,9 +99,18 @@ const ChartBuilder = () => {
     }, {});
   };
 
+  // // Printing keys and values of countMap
+  // const countMap = getCountMap(data);
+  // console.log("Count Map:");
+  // Object.entries(countMap).forEach(([key, value]) => {
+  //   console.log(`Code: ${key}, Count: ${value}`);
+  // });
+
+  
+
   return (
     <div>
-      <canvas ref={chartRef} />
+      <canvas ref={chartRef} id="myChart" width="600" height="600" />
     </div>
   );
 };
