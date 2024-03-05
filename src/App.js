@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import BarChartBuilder from './BarChartBuilder';
 import PieChartBuilder from './PieChartBuilder';
+import LineChartBuilder from './LineChartBuilder';
+
 import React, {useState} from "react";
 
 
@@ -17,11 +19,13 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => setCurrentPage('Bar')}>Bar</button>
-      <button onClick={() => setCurrentPage('Pie')}>Pie</button>
+      <button onClick={() => setCurrentPage('Bar')}>Code Bar</button>
+      <button onClick={() => setCurrentPage('Pie')}>Code Pie</button>
+      <button onClick={() => setCurrentPage('Line')}>Line</button>
       <div className="chart-container">
         {currentPage === 'Bar' && <BarChartBuilder />}
         {currentPage === 'Pie' && <PieChartBuilder />}
+        {currentPage === 'Line' && <LineChartBuilder />}
       </div>
 
     </div>
