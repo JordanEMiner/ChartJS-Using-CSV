@@ -92,7 +92,7 @@ const ChartBuilder = () => {
   const getCountMap = (data) => {
     return data.reduce((countMap, row) => {
       //Every time code# appears, increment count
-      countMap[row.Code] = (countMap[row.Code] || 0) + 1;
+      countMap[row.code] = (countMap[row.code] || 0) + 1;
       return countMap;
     }, {});
   };
