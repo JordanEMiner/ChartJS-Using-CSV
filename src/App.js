@@ -13,17 +13,6 @@ function App() {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  // //Opens selected chart on current page
-  // const renderPage = () => {
-  //   switch (currentPage) {
-  //     case 'Bar':
-  //       return <BarChartBuilder />;
-  //     case 'Pie':
-  //       return <PieChartBuilder />;
-  //     default:
-  //       return null;
-  //   }
-  // };
 
 
   return (
@@ -40,3 +29,33 @@ function App() {
 }
 
 export default App;
+
+
+/*
+  const [currentPage, setCurrentPage] = useState('chart');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'chart':
+        return <ChartUsingAPI />;
+      case 'dummyData':
+        return <DummyData />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div>
+      <h1>Your React App</h1>
+      <div>
+        <button onClick={() => setCurrentPage('chart')}>Chart</button>
+        <button onClick={() => setCurrentPage('dummyData')}>Dummy Data</button>
+      </div>
+      {renderPage()}
+    </div>
+  );
+}
+
+
+*/

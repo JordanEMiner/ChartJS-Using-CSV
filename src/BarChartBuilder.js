@@ -18,7 +18,7 @@ const ChartBuilder = () => {
   useEffect(() => {
     //Uses fetchData to retrieve data from file
     const fetchDataAndBuildChart = async () => {
-      const parsedData = await fetchData(process.env.PUBLIC_URL + 'STIG_OSS_ExportData.csv');
+      const parsedData = await fetchData(process.env.PUBLIC_URL + 'report4-Asset Collection per Primary Owner and System Admin.csv');
       //Updates 'data' state when data is retrieved
       //console.log("parsedData type: ", typeof response);
       setData(parsedData);
@@ -49,7 +49,7 @@ const ChartBuilder = () => {
           labels: columnLabels,
           datasets: [
             {
-              label: 'Code',
+              label: 'code',
               data: columnValues,
               backgroundColor: 'rgba(75, 192, 192, 0.2)',
               borderColor: 'rgba(75, 192, 192, 1)',
