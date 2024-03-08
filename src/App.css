@@ -23,6 +23,10 @@ button {
   height: auto !important; /* Allow the chart canvas to adjust its height proportionally */
 }
 
+.doughnut-chart-container canvas {
+  width: 30%; /* Ensure the chart canvas takes full width within the container */
+  height: auto !important;
+}
 
 
 .App-logo {

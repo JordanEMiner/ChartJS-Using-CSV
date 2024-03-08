@@ -37,7 +37,7 @@ const ChartBuilder = () => {
       //Get canvas context
       const ctx = chartRef.current?.getContext('2d');
       if (ctx) {
-        //coutMap = (codeNum: count of codeNum)
+        //coutMap = (codeNum: count of code)
         const countMap = getCountMap(data);
         
         //labels = code#, values = count per code

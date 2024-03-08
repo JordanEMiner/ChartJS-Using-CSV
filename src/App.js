@@ -3,6 +3,7 @@ import './App.css';
 import BarChartBuilder from './BarChartBuilder';
 import PieChartBuilder from './PieChartBuilder';
 import LineChartBuilder from './LineChartBuilder';
+import DonutChartBuilder from './DonutChartBuilder';
 
 import React, {useState} from "react";
 
@@ -22,10 +23,12 @@ function App() {
       <button onClick={() => setCurrentPage('Bar')}>Code Bar</button>
       <button onClick={() => setCurrentPage('Pie')}>Code Pie</button>
       <button onClick={() => setCurrentPage('Line')}>Line</button>
+      <button onClick={() => setCurrentPage('Donut')}>Donut</button>
       <div className="chart-container">
         {currentPage === 'Bar' && <BarChartBuilder />}
         {currentPage === 'Pie' && <PieChartBuilder />}
         {currentPage === 'Line' && <LineChartBuilder />}
+        {currentPage === 'Donut' && <DonutChartBuilder />}
       </div>
 
     </div>
@@ -63,3 +66,18 @@ export default App;
 
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
