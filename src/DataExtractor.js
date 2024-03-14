@@ -86,9 +86,6 @@ const stringToDate = (dateString) => {
         entry.deviveType = objectToString(entry.deviveType);
         
       });
-
-
-
     
       return parsedData;
 

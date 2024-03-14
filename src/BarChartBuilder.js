@@ -1,9 +1,23 @@
 import { useEffect, useState, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
-import {Chart} from 'chart.js/auto';
 import { fetchData } from './DataExtractor';
 import Papa from 'papaparse';
+import { palette } from './palette'; 
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import {
+  Chart,
+  Title,
+  Tooltip,
+  ArcElement,
+  Legend,
+} from 'chart.js/auto';
 
+Chart.register(
+    Title,
+    Tooltip,
+    ArcElement,
+    Legend,ChartDataLabels
+);
 
 const ChartBuilder = () => {
   //Returns the data and function to set the data
@@ -51,8 +65,9 @@ const ChartBuilder = () => {
             {
               label: 'code',
               data: columnValues,
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: palette, 
+              // backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              // borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 1,
             },
           ],
@@ -69,6 +84,11 @@ const ChartBuilder = () => {
               type: 'logarithmic', // Use 'linear' scale for values
               beginAtZero: true,
               values: columnValues,
+            },
+          },
+          plugins: {
+            datalabels: {
+              color: 'white', // Set data label color to white
             },
           },
         };

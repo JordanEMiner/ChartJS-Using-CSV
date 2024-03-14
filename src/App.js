@@ -7,7 +7,6 @@ import DonutChartBuilder from './DonutChartBuilder';
 
 import React, {useState} from "react";
 
-
 function App() {
   //Switch chart type on page
   const [currentPage, setCurrentPage] = useState('chart');

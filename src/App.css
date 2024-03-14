@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+
+
 button {
   margin-bottom: 15px;
   margin-right: 10px;
@@ -19,13 +21,19 @@ button {
 
 /* Add additional styling for your charts if needed */
 .chart-container canvas {
-  width: 100% !important; /* Ensure the chart canvas takes full width within the container */
+  width: 80% !important; /* Ensure the chart canvas takes full width within the container */
   height: auto !important; /* Allow the chart canvas to adjust its height proportionally */
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: #323447; */
+  
 }
 
 .doughnut-chart-container canvas {
   width: 30%; /* Ensure the chart canvas takes full width within the container */
   height: auto !important;
+  padding: 3%;
+  background-color: #323447;
 }
 
 

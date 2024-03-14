@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { fetchData } from './DataExtractor';
 import {Chart} from 'chart.js/auto';
-
+import { palette } from './palette'; 
 
 const ChartBuilder = () => {
   //Initialize variable 'data' and function setData. Initial value of data=empty array
@@ -48,16 +48,9 @@ const ChartBuilder = () => {
             {
               label: 'code',
               data: columnValues,
-              backgroundColor: [
-                "#00A6B4",
-                "#2E4057",
-                "#FFD662",
-                "#DD1C1A",
-                "#FF8600",
-                "#0E2F44",
-            ],
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 1,
+              backgroundColor: palette,
+              borderWidth: 0.5,
+              borderRadius: 3,
               hoverBackgroundColor: [
                 "#003e4f",
                 "#4c5b5c",
@@ -71,6 +64,40 @@ const ChartBuilder = () => {
           ],
         };
 
+        //format the labels
+        const chartOptions = {
+          responsive: true,
+          plugins: {
+            datalabels: {
+              align: 'top',
+              display: true,
+              labels: {
+                index: {
+                  font: {
+                    size: 12,
+                  },
+                  color: '#fff',
+                  // anchor: 'start',
+                  align: 'top',                   
+                },
+                // formatter: (value, averages) => `${(value*100).toFixed(2)}%`, 
+                
+              }
+            },
+            //format legend
+            legend: {
+              display: true,
+              labels: {
+                font: {
+                  size: 14,
+                },
+                color: '#000', // Set the color of legend labels
+                padding: 5,   // Add padding between legend items
+                  // Set the width of the colored box next to the legend label
+              },
+            },
+          },
+        };
 
         //If previous chart exists, destory it
         if (chartInstanceRef.current) {
@@ -80,6 +107,7 @@ const ChartBuilder = () => {
         const newChartInstance = new Chart(ctx, {
           type: 'pie',
           data: chartData,
+          options: chartOptions,
         });
         
         chartInstanceRef.current = newChartInstance;
@@ -119,3 +147,4 @@ const ChartBuilder = () => {
 };
 
 export default ChartBuilder;
+

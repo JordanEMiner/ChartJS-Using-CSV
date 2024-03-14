@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { fetchData } from './DataExtractor';
+import { palette } from './palette'; 
 import {
   Chart,
   Title,
@@ -16,7 +17,6 @@ Chart.register(
     ArcElement,
     Legend,ChartDataLabels
 );
-
 
 const DonutChartBuilder = () => {
   //Initialize variable 'data' and function setData. Initial value of data=empty array
@@ -78,8 +78,10 @@ const DonutChartBuilder = () => {
           datasets: [{
             label: 'Average',
             data: averages,
-            backgroundColor: ['red', 'blue', 'green', 'orange'],
-            borderWidth: 1,
+            //backgroundColor: ['#3048ff', '#7a8dfa', '#183090', '#0558a6'],
+            backgroundColor: palette, //use palette colors
+            borderWidth: 0,
+            borderRadius: 3,
           }],
         };
 
@@ -87,31 +89,20 @@ const DonutChartBuilder = () => {
         const chartOptions = {
           responsive: true,
           plugins: {
-
-
             datalabels: {
-              // formatter: (value, averages) => `${(value*100).toFixed(2)}%`, // Format value as percentage
-              // color: '#000',
-              // anchor: 'end', // Position data labels at the end of the arc
-              // // align: 'start', // Align data labels to the start of the arc
-              // align: 'end', // Align data labels to the start of the arc
-              //  offset: -50, 
-              // font: {
-              //   size: 14,
-              // },
               align: 'top',
               labels: {
                 index: {
                   font: {
                     size: 14,
                   },
-                  color: '#000',
+                  color: '#fff',
                   formatter: (val, ctx) =>  `${(val*100).toFixed(2)}%`, 
-                  anchor: 'end', 
-                  align: 'end', 
+                  // anchor: 'start',
+                  // offset: 30, 
+                  align: 'bottom',                   
                 },
                 // formatter: (value, averages) => `${(value*100).toFixed(2)}%`, 
-                
                 
               }
             },
@@ -129,7 +120,20 @@ const DonutChartBuilder = () => {
                 }
               }
             },
-          }
+
+            //format legend
+            legend: {
+              display: true,
+              responsive: true,
+              labels: {
+                // font: {
+                //   size: 14,
+                // },
+                color: '#fff', // Set the color of legend labels
+                
+              },
+            },
+          },
         };
 
         //If previous chart exists, destory it
