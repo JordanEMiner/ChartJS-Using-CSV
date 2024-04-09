@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import './App.css';
+import '../App.css';
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { fetchData } from './DataExtractor';
 import { palette } from './palette'; 

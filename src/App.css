@@ -2,12 +2,63 @@
   text-align: center;
 }
 
-
-
 button {
-  margin-bottom: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 8px 16px;
   margin-right: 10px;
+  position: relative;
+  display: inline-block;
 }
+
+
+
+.table-container {
+  flex: 1;
+  margin: 10px;
+  border-collapse: collapse;
+  box-shadow: 1px 2px 9px #323447 ;
+  border-radius: 10px;
+  
+}
+
+/* Header for the main table (not for header in collapsible row) */
+.table-container .main-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+/* Style for the subsection headers */
+.table-container .subsection-header {
+  background-color: #A8A8F0;
+  /* border: 1px solid #ddd; */
+  width: 34%;
+}
+
+/* Table cells */
+.table-container td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  /* word-wrap: break-word; */
+  overflow: visible;
+  white-space: normal; 
+  max-width: 33%; /* Set maximum width for each cell */
+  word-break: break-all; /* Force long words to break and wrap */
+
+}
+
+/* Remove alternating row colors */
+.table-container tr:nth-child(even) {
+  background-color: transparent; /* Set background color to transparent */
+}
+
+
+
+
+
 
 
 .chart-container {

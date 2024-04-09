@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { Pie } from 'react-chartjs-2';
 import { fetchData } from './DataExtractor';
 import {Chart} from 'chart.js/auto';
 import { palette } from './palette'; 

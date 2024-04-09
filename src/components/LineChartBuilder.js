@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { Line } from 'react-chartjs-2';
 import 'chartjs-adapter-date-fns';
 
 import { fetchData } from './DataExtractor';
@@ -51,7 +50,11 @@ const LineChartBuilder = () => {
     fetchDataAndBuildChart();
   }, [dataFetched]);
 
-
+  //calculate the avg of column vals
+  const calculateAverage = (values) => {
+    const sum = values.reduce((total, value) => total + value, 0);
+    return values.length > 0 ? sum / values.length : 0;
+  };
 
   //Create chart
   useEffect(() => {
@@ -63,11 +66,16 @@ const LineChartBuilder = () => {
         
         //extract labels for chart
         const labels = data.map(entry => entry.dataPulled);
-        const assessedData = data.map(entry => entry.assessed);
-        const submittedData = data.map(entry => entry.submitted);
-        const acceptedData = data.map(entry => entry.accepted);
-        const rejectedData = data.map(entry => entry.rejected);
+        const assessedValues = data.map(entry => entry.assessed);
+        const submittedValues = data.map(entry => entry.submitted);
+        const acceptedValues = data.map(entry => entry.accepted);
+        const rejectedValues = data.map(entry => entry.rejected);
 
+
+        const assessedAvg = calculateAverage(assessedValues);
+        const submittedAvg = calculateAverage(submittedValues);
+        const acceptedAvg = calculateAverage(acceptedValues);
+        const rejectedAvg = calculateAverage(rejectedValues);
         
         //Configure chart data
         const chartData = {
@@ -75,28 +83,28 @@ const LineChartBuilder = () => {
           datasets: [
             {
               label: 'Assessed',
-              data: assessedData,
+              data: assessedAvg,
               borderColor: 'red', 
               backgroundColor: 'red', 
               borderWidth: 1,
             },
             {
               label: 'Submitted',
-              data: submittedData,
+              data: submittedAvg,
               borderColor: 'blue', 
               backgroundColor: 'blue',
               borderWidth: 1,
             },
             {
               label: 'Accepted',
-              data: acceptedData,
+              data: acceptedAvg,
               borderColor: 'green', 
               backgroundColor: 'green', 
               borderWidth: 1,
             },
             {
               label: 'Rejected',
-              data: rejectedData,
+              data: rejectedAvg,
               borderColor: 'orange', 
               backgroundColor: 'orange', 
               borderWidth: 1,

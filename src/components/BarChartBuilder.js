@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { Bar } from 'react-chartjs-2';
 import { fetchData } from './DataExtractor';
-import Papa from 'papaparse';
+import '../App.css';
 import { palette } from './palette'; 
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {

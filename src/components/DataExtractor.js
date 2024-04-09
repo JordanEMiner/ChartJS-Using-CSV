@@ -72,7 +72,7 @@ const stringToDate = (dateString) => {
       //  const [year, month, day] = entry.datePulled.split('-');
       //  entry.datePulled = new Date(year, month - 1, day);
       //  entry.datePulled = stringToDate(entry.datePulled);
-        console.log(entry.datePulled, typeof entry.datePulled);
+        // console.log(entry.datePulled, typeof entry.datePulled);
         
         //convert assessed, submitted, rejected, and accepted to decimals
         entry.assessed = formatPercentage(entry.assessed);
