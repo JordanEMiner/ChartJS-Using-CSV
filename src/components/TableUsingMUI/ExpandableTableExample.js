@@ -1,8 +1,8 @@
+//Uses MaterialUI Table 
 import React, {useMemo, useState, useEffect } from "react";
 import { useTable, useExpanded } from 'react-table';
 import CreateExpandableTable from "./CreateExpandableTable";
 import { fetchData } from '../DataExtractor'; 
-import CreateBasicTable from "./CreateBasicTable";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -49,6 +49,7 @@ function ExpandableTableExample() {
             shortName,
             childRows
           }));
+          console.log(parentRows)
           setParentRows(parentRows)
         } catch (error) {
           console.error('Error fetching CSV data:', error);
@@ -74,7 +75,7 @@ function ExpandableTableExample() {
     }
   
     return (
-      <Box sx={{ margin: 1 }}>
+      <Box sx={{ margin: 1}}>
         <Table size="small" aria-label="child table">
           <TableHead>
             <TableRow>
@@ -85,7 +86,7 @@ function ExpandableTableExample() {
           </TableHead>
           <TableBody>
             {filteredChildRows.map((childRow, index) => (
-              <TableRow key={childRow.index}>
+              <TableRow key={childRow.index} className = "child-row">
                 <TableCell >{childRow.asset}</TableCell>
                 <TableCell >{childRow.sysAdmin}</TableCell>
                 <TableCell >{childRow.primaryOwner}</TableCell>
@@ -113,38 +114,3 @@ function ExpandableTableExample() {
 }
   
 export default ExpandableTableExample;
-
-
-
-    //  <Paper elevation={3}>
-    //     {parentRow.childRows.map((childRow, index) => (
-    //       <Typography key={index}>
-    //         Asset: {childRow.asset}, SysAdmin: {childRow.sysAdmin}, Primary Owner: {childRow.primaryOwner}
-    //       </Typography>
-    //     ))}
-    //   </Paper>
-
-  // function renderChildRow(parentRow) {
-  //   return (
-  //     <Box sx={{ margin: 1 }}>
-  //       <Table size="small" aria-label="child table">
-  //         <TableHead>
-  //           <TableRow>
-  //             <TableCell>Asset</TableCell>
-  //             <TableCell>SysAdmin</TableCell>
-  //             <TableCell>Primary Owner</TableCell>
-  //           </TableRow>
-  //         </TableHead>
-  //         <TableBody>
-  //           {parentRow.childRows.map((childRow, index) => (
-  //             <TableRow key={childRow.asset}>
-  //               <TableCell component="th" scope="row">{childRow.asset}</TableCell>
-  //               <TableCell>{childRow.sysAdmin}</TableCell>
-  //               <TableCell>{childRow.primaryOwner}</TableCell>
-  //             </TableRow>
-  //           ))}
-  //         </TableBody>
-  //       </Table>
-  //     </Box>
-  //   );
-  // }

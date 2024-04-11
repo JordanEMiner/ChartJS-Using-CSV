@@ -3,9 +3,10 @@ import BarChartBuilder from './components/BarChartBuilder';
 import PieChartBuilder from './components/PieChartBuilder';
 import LineChartBuilder from './components/LineChartBuilder';
 import DonutChartBuilder from './components/DonutChartBuilder';
-import ExpandableTableExample from './components/TableUsingReactTable/ExpandableTableExample';
-import BasicTableExample from './components/TableUsingReactTable/BasicTableExample'; // Import BasicTableExample
-import RenderTable from './components/TableUsingReactTable/RenderTable';
+import ExpandableTableExample from './components/TableUsingMUI/ExpandableTableExample';
+import BasicTableExample from './components/TableUsingMUI/BasicTableExample';
+import DataGridExample from './components/DataGridMUI/DataGridExample';
+// import RenderTable from './components/TableUsingReactTable/RenderTable';
 
 import React, {useState} from "react";
 
@@ -27,6 +28,8 @@ function App() {
       <button onClick={() => setCurrentPage('Donut')}>Donut</button>
       <button onClick={() => setCurrentPage('ExpandableTable')}>Expandable Table</button> 
       <button onClick={() => setCurrentPage('BasicTableExample')}>Basic Table</button> 
+      <button onClick={() => setCurrentPage('DataGrid')}>Data Grid</button> 
+      
       
       {/* <button onClick={() => setCurrentPage('RenderTable')}>RenderTable</button> */}
       <div className="chart-container">
@@ -36,7 +39,7 @@ function App() {
         {currentPage === 'Donut' && <DonutChartBuilder />}
         {currentPage === 'ExpandableTable' && <ExpandableTableExample />}
         {currentPage === 'BasicTableExample' && <BasicTableExample />} 
-
+        {currentPage === 'DataGrid' && <DataGridExample />} 
 
         {/* {currentPage === 'RenderTable' && <RenderTable />} */}
         {/* {(currentPage === 'ExpandableTable' || currentPage === 'BasicTableExample') && <RenderTable currentPage={currentPage} />}  */}

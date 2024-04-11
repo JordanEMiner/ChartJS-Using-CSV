@@ -10,6 +10,8 @@ button {
   margin-right: 10px;
   position: relative;
   display: inline-block;
+  overflow: visible;
+  
 }
 
 
@@ -20,7 +22,7 @@ button {
   border-collapse: collapse;
   box-shadow: 1px 2px 9px #323447 ;
   border-radius: 10px;
-  
+
 }
 
 /* Header for the main table (not for header in collapsible row) */
@@ -45,16 +47,18 @@ button {
   /* word-wrap: break-word; */
   overflow: visible;
   white-space: normal; 
-  max-width: 33%; /* Set maximum width for each cell */
+  max-width: 33%;
   word-break: break-all; /* Force long words to break and wrap */
-
 }
 
-/* Remove alternating row colors */
-.table-container tr:nth-child(even) {
-  background-color: transparent; /* Set background color to transparent */
+/*Row changes color when hovered over */
+.table-container tbody tr:hover {
+  background-color: #f8f3f3;
 }
 
+.table-container tbody .child-row:hover {
+  background-color: #e6e4e4;
+}
 
 
 
