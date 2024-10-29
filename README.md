@@ -3,7 +3,8 @@
 
 ## Components and Features
 
-_________________
+_________
+
 
 ### Dashboard Layouts
 If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
