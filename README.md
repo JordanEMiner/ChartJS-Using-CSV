@@ -1,69 +1,6 @@
 
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
 
-Our app provides real-time data visualization and analytics to help users generate and display data from STIG Manager.
-
-The features include:
-- Interactive data visualization (e.g. bar charts, line charts, tables, etc)
-- Updates in real-time
-- Filter and search functionality
-- Responsive design for different devices
-
-## Generate Build for Server
-- Edit **_.env_** File
-  - Change REACT_APP_REDIRECT_URI='http://localhost:3000' To #REACT_APP_REDIRECT_URI='http://localhost:3000'
-
-    - __#REACT_APP_REDIRECT_URI='http://localhost:3000'__
-    - __REACT_APP_REDIRECT_URI='https://npc2ismsdev01.nren.navy.mil/stigmanossreports/'__
-<!-- 
-- Run npm run build.
-  - When the build completes, edit index.html in the build folder.
-    -   Search for all occurrences of  href="/static/…  to href="./static/… (Add a period before /static.) **(This must be adjusted for the specific server.)**
--  Open the file explorer and map a local drive to **\\\npc2ismsdev01.nren.navy.mil\wwwSTIGMANOSSREPORTS$**
-   - Go to the shared drive. Remove all content except web.config.
-   - Copy from the build folder to the shared drive.
-   - Test the build by going to [npc2ismsdev01.nren.navy.mil/stigmanossreports/](npc2ismsdev01.nren.navy.mil/stigmanossreports). -->
-
-- Run npm run build.
-  - A new folder called 'build' should be in the repository.
-
--  Open the file explorer and map a local drive to **\\\npc2ismsdev01.nren.navy.mil\wwwSTIGMANOSSREPORTS$**
-   - Go to the shared drive. Remove all content except web.config.
-   - Copy everything from the build folder to the shared drive.
-- Edit the index.htmlfile in the shared drive.
-   - Search for all occurrences of  href="/static/…  to href="./static/… (Add a period before /static.) **(This must be adjusted for the specific server.)**
-   - Test the build by going to [npc2ismsdev01.nren.navy.mil/stigmanossreports/](npc2ismsdev01.nren.navy.mil/stigmanossreports).
-- Edit the index.html in the shared drive.
-
-
-## Installation
-Clone the repository with the following command:
-
-```bash
-git clone https://github.com/smehlmann/oss-stig-reports-with-charts.git
-```
-
-Run in terminal this command:
-
-```bash
-npm install
-```
-
-Then run this command to start your local server
-
-```bash
-npm start
-```
-
-## Technologies Used
-- **Frontend Framework**: React
-- **Styling**: Material UI (MUI), Styled-components, Bootstrap
-- **Data Visualization**:
-  - ApexCharts, React Table, MUI X Data Grid
-- **Data Management and State Management**: 
-  - Redux, React-Redux, Redux-persist, Redux-state-sync
-
-
 ## Components and Features
 
 ### Dashboard Layouts
@@ -71,7 +8,7 @@ If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected repor
 
 ### Bar Chart Components
 #### BarChartBuilder.js:  { .custom-header }
-
+---
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
   - Receives props like `dataLabels`, `dataValues`, `isHorizontal`, `xAxisHeader`, `yAxisHeader`, `onClick`, and `formatLabelToPercentage`, which configure the chart's data, orientation, axis titles, click handling, and label formatting.
