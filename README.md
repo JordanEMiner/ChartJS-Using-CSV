@@ -1,5 +1,15 @@
+h4 {
+    border-bottom: 3px solid black; /* Thicker line for h2 headers */
+    padding-bottom: 10px; /* Space between header and line */
+}
+
+hr {
+    border: none; /* Remove default styling */
+    height: 2px; /* Set height for the horizontal line */
+    background-color: grey; /* Color of the line */
+}
+
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
-<hr style="border: none; height: 3px;/>
 
 Our app provides real-time data visualization and analytics to help users generate and display data from STIG Manager.
 
