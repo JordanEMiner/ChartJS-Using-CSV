@@ -1,3 +1,171 @@
+# OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
+
+Our app provides real-time data visualization and analytics to help users generate and display data from STIG Manager.
+
+The features include:
+- Interactive data visualization (e.g. bar charts, line charts, tables, etc)
+- Updates in real-time
+- Filter and search functionality
+- Responsive design for different devices
+
+## Generate Build for Server
+- Edit **_.env_** File
+  - Change REACT_APP_REDIRECT_URI='http://localhost:3000' To #REACT_APP_REDIRECT_URI='http://localhost:3000'
+
+    - __#REACT_APP_REDIRECT_URI='http://localhost:3000'__
+    - __REACT_APP_REDIRECT_URI='https://npc2ismsdev01.nren.navy.mil/stigmanossreports/'__
+<!-- 
+- Run npm run build.
+  - When the build completes, edit index.html in the build folder.
+    -   Search for all occurrences of  href="/static/…  to href="./static/… (Add a period before /static.) **(This must be adjusted for the specific server.)**
+-  Open the file explorer and map a local drive to **\\\npc2ismsdev01.nren.navy.mil\wwwSTIGMANOSSREPORTS$**
+   - Go to the shared drive. Remove all content except web.config.
+   - Copy from the build folder to the shared drive.
+   - Test the build by going to [npc2ismsdev01.nren.navy.mil/stigmanossreports/](npc2ismsdev01.nren.navy.mil/stigmanossreports). -->
+
+- Run npm run build.
+  - A new folder called 'build' should be in the repository.
+
+-  Open the file explorer and map a local drive to **\\\npc2ismsdev01.nren.navy.mil\wwwSTIGMANOSSREPORTS$**
+   - Go to the shared drive. Remove all content except web.config.
+   - Copy everything from the build folder to the shared drive.
+- Edit the index.htmlfile in the shared drive.
+   - Search for all occurrences of  href="/static/…  to href="./static/… (Add a period before /static.) **(This must be adjusted for the specific server.)**
+   - Test the build by going to [npc2ismsdev01.nren.navy.mil/stigmanossreports/](npc2ismsdev01.nren.navy.mil/stigmanossreports).
+- Edit the index.html in the shared drive.
+
+
+## Installation
+Clone the repository with the following command:
+
+```bash
+git clone https://github.com/smehlmann/oss-stig-reports-with-charts.git
+```
+
+Run in terminal this command:
+
+```bash
+npm install
+```
+
+Then run this command to start your local server
+
+```bash
+npm start
+```
+
+## Technologies Used
+- **Frontend Framework**: React
+- **Styling**: Material UI (MUI), Styled-components, Bootstrap
+- **Data Visualization**:
+  - ApexCharts, React Table, MUI X Data Grid
+- **Data Management and State Management**: 
+  - Redux, React-Redux, Redux-persist, Redux-state-sync
+
+
+## Components and Features
+
+### Dashboard Layouts
+If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
+
+### Bar Chart Components
+#### BarChartBuilder.js:  
+***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
+- Component Props:
+  - Receives props like `dataLabels`, `dataValues`, `isHorizontal`, `xAxisHeader`, `yAxisHeader`, `onClick`, and `formatLabelToPercentage`, which configure the chart's data, orientation, axis titles, click handling, and label formatting.
+- Color Assignment: 
+  - `getColorForLabel` assigns colors to the bars based on a given label
+- Series Data: combines `dataValues` with `dataLabels` to format the series data
+- Chart Options: sets up chart configuartion (`options`) for things like events, toolbar options, etc.
+- Effects:
+  - first `useEffect` hook dynamically updates chart's `series` data when `dataValues`, `dataLabels`, or `getColorForLabel` change.
+  - second `useEffect` hook updates the `options` configuration if axis titles change
+
+  #### HorizontalBarChartBuilder.js:  
+  ***Purpose:*** renders a dynamic bar chart using ApexCharts library. Basically the the same as the `ApexBarChartBuilder` but with additional styling that is unique to horizontal bar charts. It includes the following:
+  - Component Props:
+    - Receives props like `dataLabels`, `dataValues`, `isHorizontal`, `xAxisHeader`, `yAxisHeader`, `onClick`, and `formatLabelToPercentage`, which configure the chart's data, orientation, axis titles, click handling, and label formatting.
+  - Additional Styling for y-axis Labels:
+    - Slightly offsets the y-axis labels to account for names and sets `grid.labels.left` to widen the y-axis label space.
+    - `chartHeight`: ensures that there is enough space (24px) between rows to improve readability when there is a lot of data. 
+  
+  #### GroupedOrStackedBarBuilder.js:  
+  ***Purpose:*** renders a dynamic bar chart using ApexCharts library to specifically display stacked or grouped bar charts. Mostly the same as `HorizontalBarChartBuilder`.
+  - Component Props:  
+    - `series`: series is formated beforehand and passed in
+    - `dataLabels`: labels for the values
+    - `dataLabelsArePercentages`: boolean that determines whether the `dataLabels` need to be formmated as percentages
+    - `showLabelsOnBars`: boolean that specifies whether to show the labels on the bars in the chart
+    - `isHorizontal`: boolean that specifies orientation
+    - `isStackedBarChart`: boolean that specifies whether to stack or grouped series
+    - `xAxisHeader`, `yAxisHeader`: text in headers
+    - `onClick`: specifies behavior when series is clicked
+    - `formatLabelToPercentage`: formats the labels as percentages instead of decimals
+
+  #### ApexCountByValueBarChart.js 
+  ***Purpose:*** creates a bar chart that displays the counts of unique values within a specified column (`targetColumn`). It uses helper functions and hooks to arrange and specify the data to pass to rendering components. 
+  - Props:
+    - `targetColumn`: specifies the column to count unique values
+    - `isHorizontal`: selects the bar orientation
+    - `xAxisTitle` and `yAxisTitle`: the labels for the x and y axes
+    - `data`: data to analyze
+  - Filter Hooks:
+    - `useFilter` is custom hook that provides filtering functionality for:
+      - `filter`: the global filter object
+      - `updateFilter`: add/update a property-value pair in the filter object
+      -  `removeFilterKey`: remove a property-value pair from the filter object
+  - Filtering Data:
+    - `filteredData`: re-calculates the data based on the property-value pair in the filter object.
+  - Counting Unique Values:
+    -  `countMap`: calls `ValueCountMap` component to count occurrences of each unqiue value in the `targetColumn`.
+    - `barLabels`: an array of unqiue values in the target column (keys in `countMap`).
+    - `barValues`: an array of counts for each unqiue value (values in `countMap`).
+  - Handling Bar Click Events:
+    - `handleBarClick` updates the filter when a bar is clicked:
+      - Retrieves the selected bar's label
+      - Add/removes the label from the filter object by calling `updateFilter` or `removeFilterKey` to ensure toggling functionality.
+  - Rendering the Chart:
+    - Renders the bar chart based on `isHorizontal`. If `isHorizontal` is true, it will select `HorizontalBarChartBuilder`, or else it will select and render `ApexBarChartrBuilder`.
+  
+  #### GroupedOrStackedBar.js
+    ***Purpose:*** creates a bar chart that displays the counts of unique values within a specified column (`targetColumn`). It uses helper functions and hooks to arrange and specify the data to pass to rendering components. 
+  - Props:
+    - `targetColumn`: specifies the column to count unique values
+    - `isHorizontal`: selects the bar orientation
+    - `xAxisTitle` and `yAxisTitle`: the labels for the x and y axes
+    - `data`: data to analyze
+  - Filter Hooks:
+    - `useFilter` is custom hook that provides filtering functionality for:
+      - `filter`: the global filter object
+      - `updateFilter`: add/update a property-value pair in the filter object
+      -  `removeFilterKey`: remove a property-value pair from the filter object
+  - Filtering Data:
+    - `filteredData`: re-calculates the data based on the property-value pair in the filter object.
+  - Counting Unique Values:
+    -  `countMap`: calls `ValueCountMap` component to count occurrences of each unqiue value in the `targetColumn`.
+    - `barLabels`: an array of unqiue values in the target column (keys in `countMap`).
+    - `barValues`: an array of counts for each unqiue value (values in `countMap`).
+  - Handling Bar Click Events:
+    - `handleBarClick` updates the filter when a bar is clicked:
+      - Retrieves the selected bar's label
+      - Add/removes the label from the filter object by calling `updateFilter` or `removeFilterKey` to ensure toggling functionality.
+  - Rendering the Chart:
+    - Renders the bar chart based on `isHorizontal`. If `isHorizontal` is true, it will select `HorizontalBarChartBuilder`, or else it will select and render `ApexBarChartrBuilder`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -71,7 +239,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <hr style="border: none; height: 3px; background-color: black;" />
 
-#header break
 
 ---
 
