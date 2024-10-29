@@ -1,4 +1,5 @@
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
+<hr style="border: none; height: 3px;/>
 
 Our app provides real-time data visualization and analytics to help users generate and display data from STIG Manager.
 
@@ -69,6 +70,8 @@ npm start
 If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
 
 ### Bar Chart Components
+---
+
 #### BarChartBuilder.js:  
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
@@ -161,11 +164,7 @@ If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected repor
 
 
 
-
-
-
-
-
+<!---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -237,9 +236,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-<hr style="border: none; height: 3px; background-color: black;" />
+<hr style="border: none; height: 3px;/>
 
 
 ---
+--->
 
 
