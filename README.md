@@ -2,12 +2,12 @@
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
 
 ## Components and Features
-
+---
 ### Dashboard Layouts
 If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
 
 ### Bar Chart Components
-#### BarChartBuilder.js:  { .custom-header }
+#### BarChartBuilder.js: 
 ---
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
