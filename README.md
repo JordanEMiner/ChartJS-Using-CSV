@@ -1,12 +1,5 @@
-h4 {
-    border-bottom: 3px solid black; /* Thicker line for h2 headers */
-    padding-bottom: 10px; /* Space between header and line */
-}
-
-hr {
-    border: none; /* Remove default styling */
-    height: 2px; /* Set height for the horizontal line */
-    background-color: grey; /* Color of the line */
+.custom-header {
+    border-bottom: 3px solid black; /* Custom header style */
 }
 
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
@@ -80,9 +73,7 @@ npm start
 If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
 
 ### Bar Chart Components
-#### BarChartBuilder.js:  
-
----
+#### BarChartBuilder.js:  { .custom-header }
 
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
