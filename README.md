@@ -8,7 +8,6 @@ If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected repor
 
 ### Bar Chart Components
 #### BarChartBuilder.js: 
----
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
   - Receives props like `dataLabels`, `dataValues`, `isHorizontal`, `xAxisHeader`, `yAxisHeader`, `onClick`, and `formatLabelToPercentage`, which configure the chart's data, orientation, axis titles, click handling, and label formatting.
@@ -91,9 +90,17 @@ If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected repor
   - Rendering the Chart:
     - Renders the bar chart based on `isHorizontal`. If `isHorizontal` is true, it will select `HorizontalBarChartBuilder`, or else it will select and render `ApexBarChartrBuilder`.
 
+First Horizontal Line
 
+***
 
+Second One
 
+-----
+
+Third
+
+_________
 
 
 
