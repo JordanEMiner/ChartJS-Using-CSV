@@ -1,6 +1,3 @@
-.custom-header {
-    border-bottom: 3px solid black; /* Custom header style */
-}
 
 # OSS STIG Report Generator with Charts (oss-stig-reports-with-charts)
 
