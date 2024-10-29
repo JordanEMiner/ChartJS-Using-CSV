@@ -70,9 +70,10 @@ npm start
 If a user selects report option 2, 3, 4, 5, 6 or 8, data from the selected report will be passed into the component to display the data in the chosen report. The data will then be passed to other components to render the visualizations.
 
 ### Bar Chart Components
+#### BarChartBuilder.js:  
+
 ---
 
-#### BarChartBuilder.js:  
 ***Purpose:*** renders a dynamic bar chart using ApexCharts library with customized styling, tooltips, and user interactivity. It includes the following:
 - Component Props:
   - Receives props like `dataLabels`, `dataValues`, `isHorizontal`, `xAxisHeader`, `yAxisHeader`, `onClick`, and `formatLabelToPercentage`, which configure the chart's data, orientation, axis titles, click handling, and label formatting.
